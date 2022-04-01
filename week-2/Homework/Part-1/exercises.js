@@ -14,7 +14,20 @@
  * </div>
  */
 function exerciseOne(arrayOfPeople) {
+  
   let content = document.querySelector("#content");
+for (let index = 0; index < arrayOfPeople.length; index++) {
+  
+  let myH1 = document.createElement("h1");
+  let myH2 = document.createElement("h2");
+  console.log("name",arrayOfPeople[index].name);
+  console.log("job",arrayOfPeople[index].job);
+  myH1.textContent = arrayOfPeople[index].name;
+  myH2.textContent = arrayOfPeople[index].job;
+  content.appendChild(myH1);
+  content.appendChild(myH2);
+}
+
 }
 
 /**
@@ -26,6 +39,14 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+  let content = document.querySelector("#content");
+  let myUl = document.createElement("ul");
+  shopping.forEach(element => {
+    let myLi = document.createElement("li");
+    console.log("element",element);
+    myLi.textContent = element;
+    content.appendChild(myLi);
+  });
 }
 
 /**
@@ -59,6 +80,31 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+  let myBooks = document.querySelector("#books");
+  let myUl = document.createElement("ul");
+  
+  books.forEach(element => {
+    console.log("element", element);
+    let myP = document.createElement("p");  
+    myP.textContent = (element.title);
+    console.log(element.color);
+    if (element.alreadyRead) {
+      
+      myP.style.background = "green";
+    } else {
+      myP.style.background = "red";
+    }
+    console.log(element.title);
+    console.log("myP",myP);
+    myBooks.appendChild(myP);
+    let myLi = document.createElement("li");
+    let myImg = document.createElement("img"); 
+    myLi.appendChild(myP);
+    console.log("myLi",myLi);
+    myUl.appendChild(myLi);
+  });
+  myBooks.appendChild(myUl);
+
 }
 
 //

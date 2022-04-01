@@ -15,7 +15,14 @@ Write JavaScript below that logs:
     --> should log a list of nodes with a length of 3
 
 */
-
+const ps = document.querySelectorAll("p");
+console.log("ps",ps);
+const div = document.querySelector("div");
+console.log("div",div);
+const jumbotron = document.querySelector("#jumbotron-text");
+console.log("jumbotron",jumbotron);
+const primary = document.querySelectorAll(".primary-content p");
+console.log("primary",primary);
 
 /*
 Task 2
@@ -23,6 +30,13 @@ Task 2
 
 When a user clicks the 'ALERT' button, an alert box should pop up with the text "Thanks for visiting Bikes for Refugees!"
 */
+
+const alert = document.querySelector("#alertBtn");
+alert.addEventListener("click", (e) => {
+    e.preventDefault();
+    confirm("Thanks for visiting Bikes for Refugees!");  
+    console.log("click alert");  
+})
 
 
 /*
@@ -32,6 +46,12 @@ Task 3
 Write JavaScript below that changes the background colour of the page when the 'Change colour' button is clicked.
 */
 
+const body = document.querySelector("body");
+const changeColor = document.querySelector("#bgrChangeBtn");
+changeColor.addEventListener("click", e => {
+    e.preventDefault();
+    body.style.background = "#ff000024";
+})
 
 /*
 Task 4
@@ -40,7 +60,14 @@ Task 4
 When a user clicks the ‘Add some text’ button, a new paragraph should be added inside the section that says “LEARN MORE”
 */
 
-
+const addTextBtn = document.querySelector("#addTextBtn");
+const mainArticles = document.querySelector("#mainArticles");
+const newp = document.createElement("p");
+newp.textContent = "This is a ne paragraph";
+addTextBtn.addEventListener("click", e => {
+    e.preventDefault();
+    mainArticles.appendChild(newp);
+})
 
 /*
 Task 5
@@ -49,7 +76,13 @@ Task 5
 When the 'Larger links!' button is clicked, the text of all links on the page should increase.
 */
 
-
+const largerLinksBtn = document.querySelector("#largerLinksBtn");
+const as = document.querySelectorAll("a");
+largerLinksBtn.addEventListener("click",e=>{
+    as.forEach(element => {
+        element.style.fontSize = "x-large";
+    });
+})
 /*
 Task 6
 ======
