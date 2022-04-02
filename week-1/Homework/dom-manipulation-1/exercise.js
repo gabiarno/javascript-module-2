@@ -63,7 +63,7 @@ When a user clicks the ‘Add some text’ button, a new paragraph should be add
 const addTextBtn = document.querySelector("#addTextBtn");
 const mainArticles = document.querySelector("#mainArticles");
 const newp = document.createElement("p");
-newp.textContent = "This is a ne paragraph";
+newp.textContent = "This is a new paragraph!!!! ************************************";
 addTextBtn.addEventListener("click", e => {
     e.preventDefault();
     mainArticles.appendChild(newp);
@@ -91,7 +91,19 @@ Using the same function in Task 4,
 When the 'Add' button is clicked, get the text inside the input field and create a new paragraph in the "LEARN MORE" section
 Also clear the text inside the input field
 */
+const addTextBtn2 = document.querySelector("#addArticleBtn");
+const mainArticles2 = document.querySelector("#mainArticles");
+const textBox = document.querySelector(".addArticle");
 
+const newp1 = document.createElement("p");
+
+addTextBtn2.addEventListener("click", e => {
+    console.log("textBox",textBox.value);
+    e.preventDefault();
+    newp1.textContent = textBox.value;
+    mainArticles2.appendChild(newp1);
+    textBox.value = "";
+})
 /*
 Task 7
 ======
@@ -100,4 +112,17 @@ Create an array of 5 different colors.
 Using the same function in Task 3, every time the 'Change colour' button is clicked, the background color will be changed with the next color in the array.
 The next color when you are in the last color of the array will be the first color again.
 */
+
+const myColors = ["green","yellow","black","white","pink"]
+let count = 0;
+changeColor.addEventListener("click", e => {
+    e.preventDefault();
+    body.style.background = myColors[count];
+
+    if (count < 4){
+        count ++;
+    } else {
+        count = 0;
+    }
+})
 
