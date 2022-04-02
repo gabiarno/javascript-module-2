@@ -73,7 +73,65 @@ IF all the fields are valid, when you click **Submit** it should:
 
 */
 
-const btnSubmitEl = document.querySelector("button.btn.btn-primary");
-btnSubmitEl.addEventListener("click",e => {
+const btnSubmitEl = document.querySelector("form button.btn.btn-primary");
+const nameEl = document.querySelector("#example-text-input");
+const emailEl = document.querySelector ("#exampleInputEmail1");
+const describeEl = document.querySelector("#exampleTextarea");
+
+function nonEmpty(text) {
+    console.log(text,text.length);
+    return text.length > 0;
+}
+
+function markColor (element, color){
+    console.log("validating..", element);
+    element.style.background =color;
+}
+
+function blankOut (elements){
+    elements.forEach(element => {
+        element.textContent = "";
+        markColor(element,"white");
+        
+    });
     
+}
+
+function validate(elements,validator, coloring) {
+    let valid = true;
+    elements.forEach(element => {
+        if (!validator(element.value)) {
+            console.log(element,"EMPTY");
+            valid = false;
+            coloring(element, "red");
+        }
+    });
+    return valid;
+    
+        
+    
+}
+
+btnSubmitEl.addEventListener("click",e => {
+    e.preventDefault();
+    console.log("click botton");
+    const elementsToValidate = [nameEl,emailEl,describeEl];
+    console.log("elementsToValidate",elementsToValidate);
+    const valid = validate(elementsToValidate, nonEmpty, markColor);
+    console.log("valid",valid);
+    if (valid){
+    blankOut(elementsToValidate);
+
+}
+    if (!emailEl.value.includes("@")){
+        
+        console.log("bad email");
+        markColor(emailEl,"red");
+    } else {
+        if (valid){
+            alert("Thank you for filling out the form");
+        }
+        
+    }
+
 })
