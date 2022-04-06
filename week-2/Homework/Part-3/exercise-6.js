@@ -99,5 +99,29 @@ var mentors = [
 
 ];
 
-//YOUR CODE HERE
+//YOUR CODE HERE 1. Loop through the array, and for each object, `console.log()` out the sentence only for
+mentors.forEach(mentor =>{
+  if (mentor.job.city === "Barcelona" && mentor.skills.find(skill => skill === "React")){
+    console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`);
+
+  }
+})
+
+/*
+To those that work in Barcelona, set "Jun1" in the class attribute, 
+and add a new skill to the list "SQL".*/
+
+mentors.forEach(mentor =>{
+  if (mentor.job.city === "Barcelona"){
+    mentor.class = "Jun1";
+    mentor.skills.push("SQL");
+    console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`);
+
+  }
+});
+
+console.log ("2", mentors)
+
+
+
 

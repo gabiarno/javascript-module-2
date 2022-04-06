@@ -42,8 +42,24 @@ var product2 = {
   stock: 2
 };
 
+var product3 = {
+  id: 3,
+  name: "Watch Rocker2",
+  price: 9.99,
+  stock: 4
+};
+
+var product4 = {
+  id: 4,
+  name: "Watch Rocker3",
+  price: 19.99,
+  stock: 20
+};
+
 products.push(product1);
 products.push(product2);
+products.push(product3);
+products.push(product4);
 
 var shoppingCart = {
   totalPrice: 0,
@@ -51,15 +67,37 @@ var shoppingCart = {
 };
 
 function addToShoppingCart(id){
+  var product = products.find(product => product.id === id);
+  shoppingCart.selectedProducts.push(product);
+  shoppingCart.totalPrice = shoppingCart.totalPrice + product.price;
 
 }
 
 function removeFromShoppingCart(id){
-
+  for (let i = 0; i < shoppingCart.selectedProducts.length; i++) {
+    if (shoppingCart.selectedProducts[i].id === id){
+        shoppingCart.selectedProducts.splice(i,1);
+        i--;
+    }
+    
+  }
+  
 }
 
 function shop(){
-
+  shoppingCart.selectedProducts.forEach(product => {
+    var productBuyed = products.find(p => p.id === product.id);
+    if (product.stock > 0) {
+      product.stock = product.stock -1 ;
+      console.log("product:", product.id);
+      console.log("stock:", product.stock);
+    } else {
+      console.log(`There is not enough stock of product ${product.id}`);
+    }
+    
+  });
+  shoppingCart.totalPrice = 0;
+  shoppingCart.selectedProducts = [];
 }
 
 //results
