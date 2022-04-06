@@ -3,6 +3,10 @@
 */
 
 // WRITE CODE HERE
+var kitten = {
+    name:"Gilbert",
+    age: 3
+}
 
 
 console.log(kitten.name);

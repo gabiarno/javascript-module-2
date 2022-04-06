@@ -157,3 +157,11 @@ body {
 	   max-height: 80px;
 	}
 }
+
+.alreadyRead {
+	background-color: green;
+}
+
+.notRead {
+	background-color: red;
+}

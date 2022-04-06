@@ -14,20 +14,17 @@
  * </div>
  */
 function exerciseOne(arrayOfPeople) {
-  
   let content = document.querySelector("#content");
-for (let index = 0; index < arrayOfPeople.length; index++) {
-  
-  let myH1 = document.createElement("h1");
-  let myH2 = document.createElement("h2");
-  console.log("name",arrayOfPeople[index].name);
-  console.log("job",arrayOfPeople[index].job);
-  myH1.textContent = arrayOfPeople[index].name;
-  myH2.textContent = arrayOfPeople[index].job;
-  content.appendChild(myH1);
-  content.appendChild(myH2);
-}
-
+  for (let index = 0; index < arrayOfPeople.length; index++) {
+    let myH1 = document.createElement("h1");
+    let myH2 = document.createElement("h2");
+    console.log("name", arrayOfPeople[index].name);
+    console.log("job", arrayOfPeople[index].job);
+    myH1.textContent = arrayOfPeople[index].name;
+    myH2.textContent = arrayOfPeople[index].job;
+    content.appendChild(myH1);
+    content.appendChild(myH2);
+  }
 }
 
 /**
@@ -41,12 +38,13 @@ function exerciseTwo(shopping) {
   //Write your code in here
   let content = document.querySelector("#content");
   let myUl = document.createElement("ul");
-  shopping.forEach(element => {
+  shopping.forEach((element) => {
     let myLi = document.createElement("li");
-    console.log("element",element);
+    console.log("element", element);
     myLi.textContent = element;
-    content.appendChild(myLi);
+    myUl.appendChild(myLi);
   });
+  content.appendChild(myUl);
 }
 
 /**
@@ -80,31 +78,31 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
-  let myBooks = document.querySelector("#books");
+  let myBooks = document.querySelector("#content");
   let myUl = document.createElement("ul");
-  
-  books.forEach(element => {
+
+  books.forEach((element) => {
     console.log("element", element);
-    let myP = document.createElement("p");  
-    myP.textContent = (element.title);
+    let myP = document.createElement("p");
+    myP.textContent = element.title + " - " + element.author;
     console.log(element.color);
+    console.log(element.title);
+    console.log("myP", myP);
+    myBooks.appendChild(myP);
+    let myLi = document.createElement("li");
+    let myImg = document.createElement("img");
+    myImg.src = element.url;
     if (element.alreadyRead) {
-      
       myP.style.background = "green";
     } else {
       myP.style.background = "red";
     }
-    console.log(element.title);
-    console.log("myP",myP);
-    myBooks.appendChild(myP);
-    let myLi = document.createElement("li");
-    let myImg = document.createElement("img"); 
+    myP.appendChild(myImg);
     myLi.appendChild(myP);
-    console.log("myLi",myLi);
+    console.log("myLi", myLi);
     myUl.appendChild(myLi);
   });
   myBooks.appendChild(myUl);
-
 }
 
 //
@@ -120,7 +118,7 @@ function exerciseThree(books) {
 let people = [
   { name: "Chris", job: "Teacher" },
   { name: "Joanna", job: "Student" },
-  { name: "Boris", job: "Prime Minister" }
+  { name: "Boris", job: "Prime Minister" },
 ];
 
 exerciseOne(people);
@@ -133,18 +131,21 @@ const books = [
   {
     title: "The Design of Everyday Things",
     author: "Don Norman",
-    alreadyRead: false
+    alreadyRead: false,
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfULqP-OMPRJ832XwO8nz3bNtLzA21Dc2XIoougnCwCbeEKtvLs0j_qFQelyQFoI544UM&usqp=CAU"
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
-    alreadyRead: true
+    alreadyRead: true,
+    url: "https://images-na.ssl-images-amazon.com/images/I/51iSxrqL+sL._SX335_BO1,204,203,200_.jpg"
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
-    alreadyRead: true
-  }
+    alreadyRead: true,
+    url: "https://images-na.ssl-images-amazon.com/images/I/41HXiIojloL._SX396_BO1,204,203,200_.jpg"
+  },
 ];
 
 exerciseThree(books);

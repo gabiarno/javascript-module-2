@@ -20,10 +20,12 @@ let highScores = {
 
 // ONLY EDIT BELOW HERE
 
-let capitalCitiesKeys = ;
-let highScoresKeys = ;
-let capitalCitiesValues = ;
-let highScoresValues = ;
+let capitalCitiesKeys = Object.keys(capitalCities);
+let highScoresKeys = Object.keys(highScores).sort(function(a, b){return a-b});
+let capitalCitiesValues = Object.values(capitalCities);
+let highScoresValues = Object.entries(highScores).sort(function(a, b){return a-b}).map(score =>{
+  return score[1]
+});
 
 // ONLY EDIT ABOVE HERE
 
