@@ -9,3 +9,15 @@ Task 2
 Update your code to make the colour change every 5 seconds to something different. Hint: try searching for setInterval. (https://www.w3schools.com/jsref/met_win_setinterval.asp)
 ================
 */
+
+
+
+const myTimeout = setInterval(myBackground, 5000);
+let myBody = document.body;
+function myBackground() {
+  let myBody = document.body;
+  //let x = document.body;
+  
+  console.log(myBody.style.backgroundColor);
+  myBody.style.backgroundColor = myBody.style.backgroundColor == 'red' ? 'green' : 'red';
+}
