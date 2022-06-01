@@ -9,7 +9,6 @@ let images = [
 
 function showImage(id) {
     let myImageE = document.querySelector(".myimage");
-    console.log("myImageE",myImageE);
     myImageE.src = images[id];
 }
 
@@ -17,22 +16,65 @@ let showImageCount = 1;
 
 showImage(showImageCount);
 
-document.querySelector("#fwd").addEventListener("click",event => {
-    event.preventDefault();
+function showImageForward(){
     if (showImageCount + 1 < images.length) {
         showImageCount ++;
     } else {
         showImageCount = 0;
     }
     showImage(showImageCount);
-})
+}
 
-document.querySelector("#back").addEventListener("click",event => {
-    event.preventDefault();
-    if (showImageCount - 1 < 0) {
-        showImageCount ++;
+function showImageBackward(){
+    
+    if (showImageCount - 1 > 0) {
+        showImageCount--;
     } else {
         showImageCount = images.length -1;
     }
     showImage(showImageCount);
+}
+
+document.querySelector("#fwd").addEventListener("click",event => {
+    event.preventDefault();
+    showImageForward()
+})
+
+document.querySelector("#back").addEventListener("click",event => {
+    event.preventDefault();
+    showImageBackward()
+})
+
+
+function autoForward(){
+    const interval = window.setInterval(showImageForward, 1000)
+    return interval
+}
+
+function autoBackward(){
+    const interval = window.setInterval(showImageBackward, 1000)
+    return interval
+}
+
+let autoForwardInterval;
+let autoBackwardInterval;
+
+function stopIntervals(){
+    clearInterval(autoForwardInterval)
+    clearInterval(autoBackwardInterval)
+}
+
+document.querySelector("#autoForward").addEventListener("click", event => {
+    event.preventDefault()
+    autoForwardInterval = autoForward()
+})
+
+document.querySelector("#autoBackward").addEventListener("click", event => {
+    event.preventDefault()
+    autoForwardInterval = autoBackward()
+})
+
+document.querySelector("#stop").addEventListener("click", event => {
+    event.preventDefault()
+    stopIntervals()
 })
